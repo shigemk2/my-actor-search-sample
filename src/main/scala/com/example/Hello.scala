@@ -49,5 +49,7 @@ object Hello {
       case _ => {
       }
     }
+
+    system.terminate()
   }
 }
