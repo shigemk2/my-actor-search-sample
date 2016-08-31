@@ -28,6 +28,7 @@ object Hello {
         ref ! "hi"
       }
       case ActorIdentity(`identifyId`, None) => {
+        println("not found")
       }
       case _ => {
       }
