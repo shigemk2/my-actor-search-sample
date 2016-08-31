@@ -32,5 +32,11 @@ object Hello {
       case _ => {
       }
     }
+
+    actor ! "out"
+
+    while(true) {
+      Thread.sleep(1000)
+    }
   }
 }
