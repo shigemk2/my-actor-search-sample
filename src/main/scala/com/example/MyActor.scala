@@ -22,6 +22,11 @@ class MyActor extends Actor {
       log.info("found")
       lastSender ! ref
     }
+
+    case ActorIdentity(`identifyId`, None) => {
+      log.info("not found")
+    }
+
     case s: String => {
       log.info(s)
       child ! s
