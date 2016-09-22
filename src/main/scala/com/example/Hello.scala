@@ -37,10 +37,9 @@ object Hello {
     actor ! "out"
 
     Thread.sleep(1000)
-    val future3: Future[Any] = system.actorSelection("/user/badActor") ? Identify(identifyId)
-    val result3 = Await.result(future3, timeout.duration)
-    result3 ? "not found"
-    }
+    // val future3: Future[Any] = system.actorSelection("/user/badActor") ? Identify(identifyId)
+    // val result3 = Await.result(future3, timeout.duration)
+    // result3 ? "not found"
 
     system.terminate()
   }
