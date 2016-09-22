@@ -12,14 +12,17 @@ object Hello {
     val system = ActorSystem("mySystem")
     implicit val timeout = Timeout(5 seconds)
 
+    // アクターの生成
     val props = Props[MyActor]
     val actor = system.actorOf(props, name = "myActor")
     Thread.sleep(1000)
 
+    // アクター内で別のアクターの検索を要請
     val future: Future[Any] = actor ? "search"
     val result = Await.result(future, timeout.duration).asInstanceOf[ActorRef]
     result ! "hi child"
 
+    // アクター外で検索する場合
     val identifyId = 1
     val future2: Future[Any] = system.actorSelection("/user/myActor") ? Identify(identifyId)
     val result2 = Await.result(future2, timeout.duration)
